@@ -6,6 +6,8 @@ import { types } from "../types/types";
          name:"marcel"
      }
  */
+
+ 
 export const authReducer = (state={},action)=>{
 
     switch (action.type) {
