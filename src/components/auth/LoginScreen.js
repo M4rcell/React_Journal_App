@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { login } from '../../actions/auth';
+import { login, startLoginEmailPassword } from '../../actions/auth';
 
 export const LoginScreen = () => {
 
@@ -22,7 +22,7 @@ export const LoginScreen = () => {
         e.preventDefault();
       //   console.log(email,password);
 
-     dispatch(login(123456,'Pepe'));
+     dispatch(startLoginEmailPassword(123456,'Pepe'));
 
     }
 
