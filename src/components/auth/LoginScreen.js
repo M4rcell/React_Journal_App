@@ -22,8 +22,8 @@ export const LoginScreen = () => {
         e.preventDefault();
       //   console.log(email,password);
 
-     dispatch(startLoginEmailPassword(123456,'Pepe'));
-
+     dispatch(startLoginEmailPassword(email,password));
+     
     }
 
     const handleGoogleLogin =()=>{
