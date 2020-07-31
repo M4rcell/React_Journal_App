@@ -63,6 +63,7 @@ export const startGoogleLogin=()=>{
     }
 }
 
+//dispatch
 
 export const login =(uid,displayName)=>({
     
@@ -72,4 +73,21 @@ export const login =(uid,displayName)=>({
             displayName
         }
 
+})
+
+export const startLogout=()=>{//asincrono
+
+    return async(dispatch)=>{
+
+        firebase.auth().signOut();
+
+        dispatch(logout());
+
+    }
+}
+
+
+export const logout=()=>({
+
+    type:types.logout
 })
