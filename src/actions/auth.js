@@ -1,3 +1,6 @@
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2';
+
 import {firebase, googleAuthProvider} from '../firebase/firebase-config';
 import { types } from "../types/types";
 import { startLoading, finishLoading } from './ui';
@@ -25,6 +28,8 @@ export const startLoginEmailPassword=(email,password)=>{
                 dispatch(
                     finishLoading()
                 );
+
+                Swal.fire('Error',e.message,'error');
                
             })
     }
@@ -43,7 +48,8 @@ export const startRegisterWithEmailPasswordName = (email,password,name)=>{
                 )
             })
             .catch(e=>{
-                throw new Error(e);
+                console.log(e);
+                Swal.fire('Error',e.message,'error');
             })
 
     }
