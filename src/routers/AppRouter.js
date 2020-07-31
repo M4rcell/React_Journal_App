@@ -7,6 +7,8 @@ import { AuthRouter } from './AuthRouter';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import {firebase} from '../firebase/firebase-config';
 import { login } from '../actions/auth';
+import { PublicRoute } from './PublicRoute';
+import { PrivateRoute } from './PrivateRoute';
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
@@ -45,15 +47,17 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route 
+                    <PublicRoute 
                       path="/auth"
                       component={AuthRouter}
+                      isAuthenticated={isLoggEdIn}
                     />
 
-                    <Route
+                    <PrivateRoute
                        exact
                        path="/"
                        component={JournalScreen}
+                       isAuthenticated={isLoggEdIn}
                     />  
 
                     <Redirect to="/auth/login"/>

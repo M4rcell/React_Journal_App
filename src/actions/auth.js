@@ -79,7 +79,7 @@ export const startLogout=()=>{//asincrono
 
     return async(dispatch)=>{
 
-        firebase.auth().signOut();
+       await firebase.auth().signOut();
 
         dispatch(logout());
 
