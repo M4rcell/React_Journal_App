@@ -5,7 +5,7 @@ export const NothingSelected = () => {
         <div className="nothing__main-content">
             <p>
                 select Smething
-                <hr/>
+                 
                  pr create an entrys!
             </p>
 
