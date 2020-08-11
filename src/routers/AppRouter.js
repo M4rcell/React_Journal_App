@@ -9,6 +9,8 @@ import {firebase} from '../firebase/firebase-config';
 import { login } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { loadNotes } from '../helpers/loadNotes';
+import { setNotas } from '../actions/notes';
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
@@ -20,10 +22,16 @@ export const AppRouter = () => {
     useEffect(() => {
 
         //obervable
-        firebase.auth().onAuthStateChanged((user)=>{
+        firebase.auth().onAuthStateChanged( async(user)=>{
+
          if (user?.uid) { //si existe uid
              dispatch(login(user.uid,user.displayName))
              setisLoggEdIn(true)
+              
+             //Cargar Notas
+           const notas = await loadNotes(user.uid);
+           dispatch(setNotas(notas));
+
          }
          else{
             setisLoggEdIn(false)

@@ -32,4 +32,11 @@ export const activeNote = (id,note)=>({
         ...note
     }
 
-})
+});
+
+
+export const setNotas =(notas)=>({
+    type: types.notesLoad,
+    payload:notas
+
+});
