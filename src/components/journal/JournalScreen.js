@@ -9,7 +9,7 @@ export const JournalScreen = () => {
     const state = useSelector(state => state.notes)
 
     const {active} = state;
-    console.log(active); 
+    console.log('active: ',active); 
 
     return (
         <div className="jounal__main-content">
