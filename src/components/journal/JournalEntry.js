@@ -1,31 +1,39 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({id,date,title,body,url}) => {
+
+     const noteDate = moment(date);
+     console.log(noteDate);
+
     return (
         <div className="journal__entry pointer">
-            <div 
+            {   
+                url && 
+                <div 
                 className="jounal__entry-picture"
                 style={{
                     backgroundSize:'cover',
-                    backgroundImage:'url(https://image.freepik.com/vector-gratis/dibujos-animados-astronauta_50699-129.jpg)'
+                    backgroundImage:`url(${url})`
 
                 }}
-            >
-            </div>
+                >
+                </div>
+            }
 
             <div className="journal__entry-body">
                   <p className="journal__entry-title">
-                      Un nuevo Dia
+                     {title}
                   </p>
                   <p className="journal__entry-content">
-                  Un cuento (del latín, compŭtus, cuenta)1​ es una narración breve creada por uno o varios autores, basada en hechos reales o ficticios, cuya trama es protagonizada por un grupo reducido de personajes y con un argumento relativamente sencillo.
+                    {body}
 
                   </p>
             </div>
 
             <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>28</h4>
+               <span>{noteDate.format('dddd')}</span>
+                <h4>{noteDate.format('Do')}</h4>
             </div>
         </div>
     )

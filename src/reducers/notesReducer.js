@@ -37,7 +37,7 @@ export const notesReducer = (state=initialState,action) =>{
            
             return {
                 ...state,
-                notas:{...action.payload}
+                notes:[...action.payload]
             }
     
         default:

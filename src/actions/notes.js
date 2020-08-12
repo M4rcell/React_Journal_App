@@ -39,15 +39,15 @@ export const startLoadingNotes = (uid) =>{
 
     return async(dispatch)=>{
 
-        const notas = await loadNotes(uid);
-        dispatch(setNotas(notas));
+        const notes = await loadNotes(uid);
+        dispatch(setNotas(notes));
 
     };
 }
 
 
-export const setNotas =(notas)=>({
+export const setNotas =(notes)=>({
     type: types.notesLoad,
-    payload:notas
+    payload:notes
 
 });
