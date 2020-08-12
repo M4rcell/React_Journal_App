@@ -9,8 +9,7 @@ import {firebase} from '../firebase/firebase-config';
 import { login } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { loadNotes } from '../helpers/loadNotes';
-import { setNotas } from '../actions/notes';
+import { startLoadingNotes } from '../actions/notes';
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
@@ -29,8 +28,8 @@ export const AppRouter = () => {
              setisLoggEdIn(true)
               
              //Cargar Notas
-           const notas = await loadNotes(user.uid);
-           dispatch(setNotas(notas));
+             
+           dispatch(startLoadingNotes(user.uid));
 
          }
          else{
