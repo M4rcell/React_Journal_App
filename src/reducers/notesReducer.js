@@ -16,6 +16,7 @@
 
 
 import { types } from "../types/types";
+import { act } from "@testing-library/react";
 
 const initialState = {
     notes:[],
@@ -38,6 +39,15 @@ export const notesReducer = (state=initialState,action) =>{
             return {
                 ...state,
                 notes:[...action.payload]
+            }
+        case types.notesUpdated:
+            return {
+                ...state,
+                notes:state.notes.map(
+                    note => note.id === action.payload.id  //evaluar si la nbota es ingual a action 
+                    ?action.payload.note// si id es el mismo
+                    :note //else
+                )
             }
     
         default:
