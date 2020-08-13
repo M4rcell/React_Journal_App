@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { db } from "../firebase/firebase-config";
 import {types} from '../types/types';
 import { loadNotes } from "../helpers/loadNotes";
+import { fileUpload } from '../helpers/fileUpload';
 
 //react-journal
 
@@ -97,5 +98,19 @@ export const refresNote=(id,note)=>({
 
 })
 
+
+export const startUploadImg=(file)=>{
+
+    return async(dispatch,getState)=>{ //getState ver la nota actual
+
+        const activenote= getState().notes;
+
+        const fileUrl = await fileUpload(file);
+
+        console.log(fileUrl);
+
+
+    }
+}
 
 
