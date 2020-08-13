@@ -7,7 +7,8 @@ export const startNewNotes=()=>{
 
     return async (dispatch,getState)=>{
 
-        const uid=getState().auth.uid;
+        const {uid}=getState().auth;
+        //  const {uid}=getState().auth.uid;
         
         const newNote={
 
@@ -51,3 +52,29 @@ export const setNotas =(notes)=>({
     payload:notes
 
 });
+
+
+export const startSaveNote=(note)=>{
+
+    return async(dispatch,getState)=>{
+
+        const {uid} = getState().auth;
+
+        if (!note.url) {
+
+            delete note.url;
+            
+        }
+
+        const notesToFireStore = {...note}
+
+
+        delete notesToFireStore.id;// eliminar la propiedad id
+
+        await db.doc(`${uid}/journal/notes/${note.id}`).update(notesToFireStore);
+
+
+
+
+    }
+}
