@@ -103,12 +103,29 @@ export const startUploadImg=(file)=>{
 
     return async(dispatch,getState)=>{ //getState ver la nota actual
 
-        const activenote= getState().notes;
-
+        const {active:activeNote}= getState().notes;
+        //console.log(activeNote);
+        
+        // abrir loading de cargar
+        Swal.fire({
+            title:'Uploading.....',
+            text:'Please wait....',
+            allowOutSideClick:false,
+            onBeforeOpen:()=>{
+               Swal.showLoading();
+            }
+        })
+ 
         const fileUrl = await fileUpload(file);
+      
+        //console.log(fileUrl);
+        // guaradar url en notas.URL
+        activeNote.url = fileUrl;
 
-        console.log(fileUrl);
-
+        dispatch(startSaveNote(activeNote));
+      
+         // Cerrar loading de cargar
+         Swal.close();
 
     }
 }
