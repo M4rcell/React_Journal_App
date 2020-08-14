@@ -8,9 +8,9 @@ export const JournalEntries = () => {
     const {notes} = state;
 
     //console.log(notes);
-
+  //className="animate__animated animate__fadeIn animate__faster"
     return (
-        <div className="journal__entries">
+        <div className="journal__entries ">
             {
                 notes.map((note) => (
                     <JournalEntry 

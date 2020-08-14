@@ -12,7 +12,7 @@ export const JournalScreen = () => {
     //console.log('active: ',active); 
 
     return (
-        <div className="jounal__main-content">
+        <div className="jounal__main-content  animate__fadeIn animate__faster">
             <Sidebar/>
 
             <main>
