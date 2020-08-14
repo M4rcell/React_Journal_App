@@ -4,6 +4,7 @@ import { db } from "../firebase/firebase-config";
 import {types} from '../types/types';
 import { loadNotes } from "../helpers/loadNotes";
 import { fileUpload } from '../helpers/fileUpload';
+import { auth } from 'firebase';
 
 //react-journal
 
@@ -130,4 +131,23 @@ export const startUploadImg=(file)=>{
     }
 }
 
+//DELETE NOTE
+export const StartDeleting =(id)=>{
+
+    return async(dispatch,getState)=>{
+
+        const uid= getState().auth.uid;
+        await db.doc(`${uid}/journal/notes/${id}`).delete();
+        
+        dispatch(deleteNote(id));
+    }
+
+}
+
+export const deleteNote=(id)=>({
+
+    type:types.notesDelete,
+    payload:id
+
+})
 
