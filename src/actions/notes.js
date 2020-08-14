@@ -27,9 +27,19 @@ export const startNewNotes=()=>{
         
         dispatch(activeNote(doc.id,newNote));
 
+        dispatch(addNewNote(doc.id,newNote));
+
      }
 
 }
+ export const addNewNote=(id,note)=>({
+   
+    type:types.notesAddNew,
+    payload:{
+        id,
+        ...note
+    }
+ })
 
 export const activeNote = (id,note)=>({
     
@@ -151,3 +161,8 @@ export const deleteNote=(id)=>({
 
 })
 
+
+export const noteLogout=()=>({
+
+    type:types.notesLogoutCleaning
+})
